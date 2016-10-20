@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0c3c43a0-53cf-4bc5-aa92-db8e31291d3b" name="Default" comment="" />
+    <list default="true" id="0c3c43a0-53cf-4bc5-aa92-db8e31291d3b" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/computer.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/alpha_beta_agent.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/minimax_agent.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/model.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/Breakthrough.iml" afterPath="$PROJECT_DIR$/.idea/Breakthrough.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/breakthroughgame.py" afterPath="$PROJECT_DIR$/breakthroughgame.py" />
+    </list>
     <ignored path="Breakthrough.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,7 +32,7 @@
       <file leaf-file-name="example.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/example.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
+            <state relative-caret-position="135">
               <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
               <folding />
             </state>
@@ -33,11 +42,43 @@
       <file leaf-file-name="breakthroughgame.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/breakthroughgame.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
-              <caret line="154" column="46" selection-start-line="154" selection-start-column="46" selection-end-line="154" selection-end-column="46" />
+            <state relative-caret-position="556">
+              <caret line="245" column="10" selection-start-line="245" selection-start-column="10" selection-end-line="245" selection-end-column="10" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="minimax_agent.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/minimax_agent.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="729">
+              <caret line="36" column="37" selection-start-line="36" selection-start-column="37" selection-end-line="36" selection-end-column="37" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="model.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="583">
+              <caret line="152" column="101" selection-start-line="152" selection-start-column="101" selection-end-line="152" selection-end-column="101" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="alpha_beta_agent.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/alpha_beta_agent.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="718">
+              <caret line="41" column="48" selection-start-line="41" selection-start-column="48" selection-end-line="41" selection-end-column="48" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -51,19 +92,28 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/example.py" />
+        <option value="$PROJECT_DIR$/minimax_agant.py" />
+        <option value="$PROJECT_DIR$/src/alpha_beta_agent.py" />
+        <option value="$PROJECT_DIR$/src/model.py" />
+        <option value="$PROJECT_DIR$/model.py" />
+        <option value="$PROJECT_DIR$/alpha_beta_agent.py" />
+        <option value="$PROJECT_DIR$/minimax_agent.py" />
         <option value="$PROJECT_DIR$/breakthroughgame.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="54" />
-    <option name="y" value="-8" />
-    <option name="width" value="1320" />
-    <option name="height" value="784" />
+    <option name="x" value="106" />
+    <option name="y" value="-12" />
+    <option name="width" value="2466" />
+    <option name="height" value="1464" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -90,6 +140,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -97,6 +148,14 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="Breakthrough" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; Python 3.5.2 (D:\Python3.5_64\python.exe) &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -125,13 +184,17 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\UIUC\CS440\Breakthrough" />
+    </key>
   </component>
   <component name="RunManager" selected="Python.breakthroughgame">
     <configuration default="false" name="example" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -329,16 +392,25 @@
     </task>
     <servers />
   </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
-    <frame x="54" y="-8" width="1320" height="784" extended-state="6" />
-    <editor active="false" />
+    <frame x="106" y="-12" width="2466" height="1464" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24960998" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.083229296" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32978722" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32872504" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32718894" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32978722" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32548702" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18668832" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -364,12 +436,188 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/example.py">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/breakthroughgame.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5994">
+          <caret line="222" column="29" selection-start-line="222" selection-start-column="29" selection-end-line="222" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3699">
+          <caret line="137" column="22" selection-start-line="137" selection-start-column="22" selection-end-line="137" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/alpha_beta_agent.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="12" column="44" selection-start-line="12" selection-start-column="44" selection-end-line="12" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/minimax_agent.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="7" column="23" selection-start-line="0" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/breakthroughgame.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="621">
+          <caret line="25" column="22" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/minimax_agent.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/breakthroughgame.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="621">
+          <caret line="25" column="22" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/minimax_agent.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/breakthroughgame.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="621">
+          <caret line="25" column="22" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/minimax_agent.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/breakthroughgame.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="25" column="22" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/minimax_agent.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/breakthroughgame.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example.py">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding />
@@ -394,10 +642,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Programming/Python3/Lib/site-packages/pygame/examples/aliens.py">
+    <entry file="file://$PROJECT_DIR$/breakthroughgame.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3213">
-          <caret line="189" column="0" selection-start-line="189" selection-start-column="0" selection-end-line="189" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -419,13 +678,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Programming/Python3/Lib/site-packages/pygame/examples/aliens.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3213">
-          <caret line="189" column="0" selection-start-line="189" selection-start-column="0" selection-end-line="189" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://C:/Programming/Python3/Lib/site-packages/pygame/examples/aliens.py" />
     <entry file="file://$PROJECT_DIR$/breakthroughgame.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -444,17 +697,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Programming/Python3/Lib/site-packages/pygame/examples/aliens.py">
+    <entry file="file://C:/Programming/Python3/Lib/site-packages/pygame/examples/aliens.py" />
+    <entry file="file://$PROJECT_DIR$/breakthroughgame.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Programming/Python3/Lib/site-packages/pygame/examples/aliens.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3145">
-          <caret line="189" column="0" selection-start-line="189" selection-start-column="0" selection-end-line="189" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -466,10 +716,47 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://C:/Programming/Python3/Lib/site-packages/pygame/examples/aliens.py" />
+    <entry file="file://C:/Programming/Python3/Lib/site-packages/pygame/examples/aliens.py" />
+    <entry file="file://$PROJECT_DIR$/minimax_agant.py" />
+    <entry file="file://$PROJECT_DIR$/example.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="583">
+          <caret line="152" column="101" selection-start-line="152" selection-start-column="101" selection-end-line="152" selection-end-column="101" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/alpha_beta_agent.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="718">
+          <caret line="41" column="48" selection-start-line="41" selection-start-column="48" selection-end-line="41" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/minimax_agent.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="729">
+          <caret line="36" column="37" selection-start-line="36" selection-start-column="37" selection-end-line="36" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/breakthroughgame.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="154" column="46" selection-start-line="154" selection-start-column="46" selection-end-line="154" selection-end-column="46" />
+        <state relative-caret-position="556">
+          <caret line="245" column="10" selection-start-line="245" selection-start-column="10" selection-end-line="245" selection-end-column="10" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>

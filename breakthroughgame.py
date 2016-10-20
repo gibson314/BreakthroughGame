@@ -1,6 +1,9 @@
 import pygame
 # from pygame.locals import *
 import sys, os, math
+from minimax_agent import *
+from model import *
+from alpha_beta_agent import *
 
 
 class BreakthroughGame:
@@ -17,6 +20,7 @@ class BreakthroughGame:
         self.outline = 0
         self.reset = 0
         self.winner = 0
+        self.computer = None
 
         # status 0: origin;  1: ready to move; 2: end
         # turn 1: black 2: white
@@ -52,7 +56,9 @@ class BreakthroughGame:
 
         # display the board and chess
         self.display()
-
+        if self.status == 5:
+            self.ai_move_minimax()
+            # self.clock.tick(100)
         # Events accepting
         for event in pygame.event.get():
             # Quit if close the windows
@@ -70,6 +76,16 @@ class BreakthroughGame:
                             [2, 2, 2, 2, 2, 2, 2, 2]]
                 self.turn = 1
                 self.status = 0
+            # computer button pressed
+            elif event.type == pygame.MOUSEBUTTONDOWN and self.iscomputer(event.pos):
+                # self.ai_move_alphabeta()
+                self.ai_move_minimax()
+
+            elif event.type == pygame.MOUSEBUTTONDOWN and self.isauto(event.pos):
+                self.status = 5
+
+            # ====================================================================================
+            # select chess
             elif event.type == pygame.MOUSEBUTTONDOWN and self.status == 0:
                 x, y = event.pos
                 coor_y = math.floor(x / self.sizeofcell)
@@ -78,7 +94,7 @@ class BreakthroughGame:
                     self.status = 1
                     self.ori_y = math.floor(x / self.sizeofcell)
                     self.ori_x = math.floor(y / self.sizeofcell)
-
+            # check whether the selected chess can move, otherwise select other chess
             elif event.type == pygame.MOUSEBUTTONDOWN and self.status == 1:
                 x, y = event.pos
                 self.new_y = math.floor(x / self.sizeofcell)
@@ -94,29 +110,37 @@ class BreakthroughGame:
         # update the screen
         pygame.display.flip()
 
+    # load the graphics and rescale them
     def initgraphics(self):
         self.board = pygame.image.load_extended(os.path.join('src', 'chessboard.jpg'))
         self.board = pygame.transform.scale(self.board, (560, 560))
         self.blackchess = pygame.image.load_extended(os.path.join('src', 'blackchess.png'))
-        self.blackchess = pygame.transform.scale(self.blackchess, (self.sizeofcell, self.sizeofcell))
+        self.blackchess = pygame.transform.scale(self.blackchess, (self.sizeofcell- 20, self.sizeofcell - 20))
         self.whitechess = pygame.image.load_extended(os.path.join('src', 'whitechess.png'))
-        self.whitechess = pygame.transform.scale(self.whitechess, (self.sizeofcell, self.sizeofcell))
+        self.whitechess = pygame.transform.scale(self.whitechess, (self.sizeofcell - 20, self.sizeofcell - 20))
         self.outline = pygame.image.load_extended(os.path.join('src', 'square-outline.png'))
         self.outline = pygame.transform.scale(self.outline, (self.sizeofcell, self.sizeofcell))
         self.reset = pygame.image.load_extended(os.path.join('src', 'reset.jpg'))
-        self.reset = pygame.transform.scale(self.reset, (50, 50))
+        self.reset = pygame.transform.scale(self.reset, (80, 80))
         self.winner = pygame.image.load_extended(os.path.join('src', 'winner.png'))
         self.winner = pygame.transform.scale(self.winner, (250, 250))
+        self.computer = pygame.image.load_extended(os.path.join('src', 'computer.png'))
+        self.computer = pygame.transform.scale(self.computer, (80, 80))
+        self.auto = pygame.image.load_extended(os.path.join('src', 'auto.png'))
+        self.auto = pygame.transform.scale(self.auto, (80, 80))
 
+    # display the graphics in the window
     def display(self):
         self.screen.blit(self.board, (0, 0))
-        self.screen.blit(self.reset, (605, 50))
+        self.screen.blit(self.reset, (590, 50))
+        self.screen.blit(self.computer, (590, 200))
+        self.screen.blit(self.auto, (590, 340))
         for i in range(8):
             for j in range(8):
                 if self.boardmatrix[i][j] == 1:
-                    self.screen.blit(self.blackchess, (self.sizeofcell * j, self.sizeofcell * i))
+                    self.screen.blit(self.blackchess, (self.sizeofcell * j + 10, self.sizeofcell * i + 10))
                 elif self.boardmatrix[i][j] == 2:
-                    self.screen.blit(self.whitechess, (self.sizeofcell * j, self.sizeofcell * i))
+                    self.screen.blit(self.whitechess, (self.sizeofcell * j + 10, self.sizeofcell * i + 10))
         if self.status == 1:
             # only downward is acceptable
             if self.boardmatrix[self.ori_x][self.ori_y] == 1:
@@ -172,7 +196,19 @@ class BreakthroughGame:
 
     def isreset(self, pos):
         x, y = pos
-        if 655 >= x >= 605 and 50 <= y <= 100:
+        if 670 >= x >= 590 and 50 <= y <= 130:
+            return True
+        return False
+
+    def iscomputer(self, pos):
+        x, y = pos
+        if 590 <= x <= 670 and 200 <= y <= 280:
+            return True
+        return False
+
+    def isauto(self, pos):
+        x, y = pos
+        if 590 <= x <= 670 and 340 <= y <= 420:
             return True
         return False
 
@@ -190,10 +226,33 @@ class BreakthroughGame:
             return 1
         return 0
 
+    def ai_move_minimax(self):
+        self.boardmatrix = MinimaxAgent(self.boardmatrix, self.turn, 3, 1).minimax_decision().getMatrix()
+        if self.turn == 1:
+            self.turn = 2
+        elif self.turn == 2:
+            self.turn = 1
+        # self.status = 0
+        if 2 in self.boardmatrix[0] or 1 in self.boardmatrix[7]:
+            self.status = 3
+            print(self.boardmatrix)
+
+    def ai_move_alphabeta(self):
+        self.boardmatrix = AlphaBetaAgent(self.boardmatrix, self.turn, 3, 1).alpha_beta_decision().getMatrix()
+        if self.turn == 1:
+            self.turn = 2
+        elif self.turn == 2:
+            self.turn = 1
+        # self.status = 0
+        if 2 in self.boardmatrix[0] or 1 in self.boardmatrix[7]:
+            self.status = 3
+
+
 def main():
     game = BreakthroughGame()
     while 1:
         game.run()
+
 
 if __name__ == '__main__':
     main()
