@@ -52,7 +52,11 @@ class State:
                  black_num=0,
                  white_num=0,
                  turn=1,
-                 function=0):
+                 function=0,
+                 width=8,
+                 height=8):
+        self.width = width
+        self.height = height
         if black_position is None:
             self.black_positions = []
         else:
@@ -66,10 +70,10 @@ class State:
         self.turn = turn
         self.function = function
         if boardmatrix is not None:
-            self.wide = len(boardmatrix[0])
-            self.height = len(boardmatrix)
+            # self.wide = len(boardmatrix[0])
+            # self.height = len(boardmatrix)
             for i in range(self.height):
-                for j in range(self.wide):
+                for j in range(self.width):
                     if boardmatrix[i][j] == 1:
                         self.black_positions.append((i, j))
                         self.black_num += 1
@@ -104,7 +108,7 @@ class State:
             else:
                 print("Invalid action!")
 
-        state = State(black_position=black_pos, white_position=white_pos, black_num=self.black_num, white_num=self.white_num, turn=alterturn(action.turn), function=self.function)
+        state = State(black_position=black_pos, white_position=white_pos, black_num=self.black_num, white_num=self.white_num, turn=alterturn(action.turn), function=self.function, height=self.height, width=self.width)
         return state
 
     def available_actions(self):
@@ -112,11 +116,11 @@ class State:
         if self.turn == 1:
             for pos in self.black_positions:
                 # ======Caution!======
-                if pos[0] != 7 and pos[1] != 0 and (pos[0] + 1, pos[1] - 1) not in self.black_positions:
+                if pos[0] != self.height - 1 and pos[1] != 0 and (pos[0] + 1, pos[1] - 1) not in self.black_positions:
                     available_actions.append(Action(pos, 1, 1))
-                if pos[0] != 7 and (pos[0] + 1, pos[1]) not in self.black_positions and (pos[0] + 1, pos[1]) not in self.white_positions:
+                if pos[0] != self.height - 1 and (pos[0] + 1, pos[1]) not in self.black_positions and (pos[0] + 1, pos[1]) not in self.white_positions:
                     available_actions.append(Action(pos, 2, 1))
-                if pos[0] != 7 and pos[1] != 7 and (pos[0] + 1, pos[1] + 1) not in self.black_positions:
+                if pos[0] != self.height - 1 and pos[1] != self.width - 1 and (pos[0] + 1, pos[1] + 1) not in self.black_positions:
                     available_actions.append(Action(pos, 3, 1))
         elif self.turn == 2:
             for pos in self.white_positions:
@@ -125,12 +129,12 @@ class State:
                     available_actions.append(Action(pos, 1, 2))
                 if pos[0] != 0 and (pos[0] - 1, pos[1]) not in self.black_positions and (pos[0] - 1, pos[1]) not in self.white_positions:
                     available_actions.append(Action(pos, 2, 2))
-                if pos[0] != 0 and pos[1] != 7 and (pos[0] - 1, pos[1] + 1) not in self.white_positions:
+                if pos[0] != 0 and pos[1] != self.width - 1 and (pos[0] - 1, pos[1] + 1) not in self.white_positions:
                     available_actions.append(Action(pos, 3, 2))
         return available_actions
 
     def getMatrix(self):
-        matrix = [[0 for _ in range(8)] for _ in range(8)]
+        matrix = [[0 for _ in range(self.width)] for _ in range(self.height)]
         for item in self.black_positions:
             matrix[item[0]][item[1]] = 1
         for item in self.white_positions:
@@ -147,15 +151,29 @@ class State:
             return self.defensive_function(turn)
 
     def offensive_function(self, turn):
+        """
+        2 * offensive_component + defensive_componet + tie_breaking
+        """
         if turn == 1:
-            return 2 * max([pos[0] for pos in self.black_positions]) - len(self.white_positions), len(self.black_positions)
+            return 2 * (sum([pos[0] for pos in self.black_positions]) - len(self.white_positions))\
+                + (sum([pos[0] for pos in self.white_positions]) + len(self.black_positions))
         else:
-            return 2 * min([pos[0] for pos in self.white_positions]) - len(self.black_positions), len(self.white_positions)
+            return 2 * (-sum([pos[0] for pos in self.white_positions]) - len(self.black_positions))\
+                + (-sum([pos[0] for pos in self.black_positions]) + len(self.white_positions))
 
     def defensive_function(self, turn):
-        return 0
+        """
+        2 * defensive_component + offensive_componet + tie_breaking
+        """
+        if turn == 1:
+            return 2 * (sum([pos[0] for pos in self.white_positions]) + len(self.black_positions)) \
+                + (sum([pos[0] for pos in self.black_positions]) - len(self.white_positions))
+        else:
+            return 2 * (-sum([pos[0] for pos in self.black_positions]) + len(self.white_positions))\
+            + (-sum([pos[0] for pos in self.white_positions]) - len(self.black_positions))
 
     def isgoalstate(self):
-        if 0 in [item[0] for item in self.white_positions] or 7 in [item[0] for item in self.black_positions]:
+        if 0 in [item[0] for item in self.white_positions] or self.height - 1 in [item[0] for item in self.black_positions]\
+                or len(self.black_positions) == 0 or len(self.white_positions) == 0:
             return True
         return False
