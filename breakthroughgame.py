@@ -68,7 +68,7 @@ class BreakthroughGame:
             # Black
             if self.turn == 1:
                 start = time.clock()
-                self.ai_move(2, 2)
+                self.ai_move(1, 2)
                 self.total_time_1 += (time.clock() - start)
                 self.total_step_1 += 1
                 print('total_step_1 = ', self.total_step_1,
@@ -289,15 +289,39 @@ class BreakthroughGame:
         if self.isgoalstate():
             self.status = 3
 
-    def isgoalstate(self):
-        if 2 in self.boardmatrix[0] or 1 in self.boardmatrix[7]:
+    def isgoalstate(self, base=0):
+        if base == 0:
+            if 2 in self.boardmatrix[0] or 1 in self.boardmatrix[7]:
+                return True
+            else:
+                for line in self.boardmatrix:
+                    if 1 in line or 2 in line:
+                        return False
             return True
         else:
+            count = 0
+            for i in self.boardmatrix[0]:
+                if i == 2:
+                    count += 1
+            if count == 3:
+                return True
+            count = 0
+            for i in self.boardmatrix[7]:
+                if i == 1:
+                    count += 1
+            if count == 3:
+                return True
+            count1 = 0
+            count2 = 0
             for line in self.boardmatrix:
-                if 1 in line or 2 in line:
-                    return False
-        return True
-
+                for i in line:
+                    if i == 1:
+                        count1 += 1
+                    elif i == 2:
+                        count2 += 1
+            if count1 <= 2 or count2 <= 2:
+                return True
+        return False
 
 def main():
     game = BreakthroughGame()

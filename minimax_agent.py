@@ -13,8 +13,8 @@ class MinimaxAgent:
         self.piece_num = 0
 
     def max_value(self, state, depth):
-        if depth == self.maxdepth or state.isgoalstate():
-            # print("utility", state.utility(self.turn))
+        if depth == self.maxdepth or state.isgoalstate() != 0:
+            print("utility", state.utility(self.turn))
             return state.utility(self.turn)
         v = MINNUM
         for action in state.available_actions():
@@ -24,8 +24,8 @@ class MinimaxAgent:
         return v
 
     def min_value(self, state, depth):
-        if depth == self.maxdepth or state.isgoalstate():
-            # print("utility", state.utility(self.turn))
+        if depth == self.maxdepth or state.isgoalstate() != 0:
+            print("utility", state.utility(self.turn))
             return state.utility(self.turn)
         v = MAXNUM
         for action in state.available_actions():
@@ -43,7 +43,6 @@ class MinimaxAgent:
         v = MINNUM
         for action in initialstate.available_actions():
             self.nodes += 1
-
             new_state = initialstate.transfer(action)
             if new_state.isgoalstate():
                 final_action = action

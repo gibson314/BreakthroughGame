@@ -1,3 +1,4 @@
+
 initial_boardmatrix = [[1, 1, 1, 1, 1, 1, 1, 1],
                [1, 1, 1, 1, 1, 1, 1, 1],
                [0, 0, 0, 0, 0, 0, 0, 0],
@@ -43,6 +44,8 @@ class Action:
         self.turn = turn
     def getString(self):
         return self.coordinate, self.direction, self.turn
+    def getCoordinate_x(self):
+        return self.coordinate[0]
 
 class State:
     def __init__(self,
@@ -114,7 +117,7 @@ class State:
     def available_actions(self):
         available_actions = []
         if self.turn == 1:
-            for pos in self.black_positions:
+            for pos in sorted(self.black_positions, key=lambda p: (p[0], -p[1]), reverse=True):
                 # ======Caution!======
                 if pos[0] != self.height - 1 and pos[1] != 0 and (pos[0] + 1, pos[1] - 1) not in self.black_positions:
                     available_actions.append(Action(pos, 1, 1))
@@ -122,8 +125,9 @@ class State:
                     available_actions.append(Action(pos, 2, 1))
                 if pos[0] != self.height - 1 and pos[1] != self.width - 1 and (pos[0] + 1, pos[1] + 1) not in self.black_positions:
                     available_actions.append(Action(pos, 3, 1))
+
         elif self.turn == 2:
-            for pos in self.white_positions:
+            for pos in sorted(self.white_positions, key=lambda p: (p[0], p[1])):
                 # ======Caution!======
                 if pos[0] != 0 and pos[1] != 0 and (pos[0] - 1, pos[1] - 1) not in self.white_positions:
                     available_actions.append(Action(pos, 1, 2))
@@ -131,6 +135,7 @@ class State:
                     available_actions.append(Action(pos, 2, 2))
                 if pos[0] != 0 and pos[1] != self.width - 1 and (pos[0] - 1, pos[1] + 1) not in self.white_positions:
                     available_actions.append(Action(pos, 3, 2))
+
         return available_actions
 
     def getMatrix(self):
@@ -154,26 +159,37 @@ class State:
         """
         2 * offensive_component + defensive_componet + tie_breaking
         """
+        winning = 0
         if turn == 1:
-            return 2 * (sum([pos[0] for pos in self.black_positions]) - len(self.white_positions))\
-                + (sum([pos[0] for pos in self.white_positions]) + len(self.black_positions))
+            if self.isgoalstate() == 1:
+                winning = 99
+            return winning + 2 * (sum([pos[0] for pos in self.black_positions])/len(self.black_positions) - len(self.white_positions))\
+                + (sum([pos[0] for pos in self.white_positions])/len(self.white_positions) + len(self.black_positions))
         else:
-            return 2 * (-sum([pos[0] for pos in self.white_positions]) - len(self.black_positions))\
-                + (-sum([pos[0] for pos in self.black_positions]) + len(self.white_positions))
+            if self.isgoalstate() == 2:
+                winning = 99
+            return winning + 2 * (-sum([pos[0] for pos in self.white_positions])/len(self.white_positions) - len(self.black_positions))\
+                + (-sum([pos[0] for pos in self.black_positions])/len(self.black_positions) + len(self.white_positions))
 
     def defensive_function(self, turn):
         """
         2 * defensive_component + offensive_componet + tie_breaking
         """
+        winning = 0
         if turn == 1:
-            return 2 * (sum([pos[0] for pos in self.white_positions]) + len(self.black_positions)) \
-                + (sum([pos[0] for pos in self.black_positions]) - len(self.white_positions))
+            if self.isgoalstate() == 1:
+                winning = 99
+            return winning + 2 * (sum([pos[0] for pos in self.white_positions])/len(self.white_positions) + len(self.black_positions)) \
+                + (sum([pos[0] for pos in self.black_positions])/len(self.black_positions) - len(self.white_positions))
         else:
-            return 2 * (-sum([pos[0] for pos in self.black_positions]) + len(self.white_positions))\
-            + (-sum([pos[0] for pos in self.white_positions]) - len(self.black_positions))
+            if self.isgoalstate() == 2:
+                winning = 99
+            return winning + 2 * (-sum([pos[0] for pos in self.black_positions])/len(self.black_positions) + len(self.white_positions))\
+            + (-sum([pos[0] for pos in self.white_positions])/len(self.white_positions) - len(self.black_positions))
 
     def isgoalstate(self):
-        if 0 in [item[0] for item in self.white_positions] or self.height - 1 in [item[0] for item in self.black_positions]\
-                or len(self.black_positions) == 0 or len(self.white_positions) == 0:
-            return True
-        return False
+        if 0 in [item[0] for item in self.white_positions] or len(self.black_positions) == 0:
+            return 2
+        if self.height - 1 in [item[0] for item in self.black_positions] or len(self.white_positions) == 0:
+            return 1
+        return 0
