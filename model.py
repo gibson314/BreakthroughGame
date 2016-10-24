@@ -159,33 +159,65 @@ class State:
         """
         2 * offensive_component + defensive_componet + tie_breaking
         """
-        winning = 0
-        if turn == 1:
-            if self.isgoalstate() == 1:
-                winning = 99
-            return winning + 2 * (sum([pos[0] for pos in self.black_positions])/len(self.black_positions) - len(self.white_positions))\
-                + (sum([pos[0] for pos in self.white_positions])/len(self.white_positions) + len(self.black_positions))
-        else:
-            if self.isgoalstate() == 2:
-                winning = 99
-            return winning + 2 * (-sum([pos[0] for pos in self.white_positions])/len(self.white_positions) - len(self.black_positions))\
-                + (-sum([pos[0] for pos in self.black_positions])/len(self.black_positions) + len(self.white_positions))
+        return 2 * self.myscore(turn) - self.enemyscore(turn)
+        # winning = 0
+        # if turn == 1:
+        #     if self.isgoalstate() == 1:
+        #         winning = 99
+        #     return winning + 2 * (sum([pos[0] for pos in self.black_positions])/len(self.black_positions) - len(self.white_positions))\
+        #         + (sum([pos[0] for pos in self.white_positions])/len(self.white_positions) + len(self.black_positions))
+        # else:
+        #     if self.isgoalstate() == 2:
+        #         winning = 99
+        #     return winning + 2 * (-sum([pos[0] for pos in self.white_positions])/len(self.white_positions) - len(self.black_positions))\
+        #         + (-sum([pos[0] for pos in self.black_positions])/len(self.black_positions) + len(self.white_positions))
 
     def defensive_function(self, turn):
         """
         2 * defensive_component + offensive_componet + tie_breaking
         """
-        winning = 0
+        return self.myscore(turn) - 2 * self.enemyscore(turn)
+
+        # winning = 0
+        # if turn == 1:
+        #     if self.isgoalstate() == 1:
+        #         winning = 99
+        #     return winning + 2 * (sum([pos[0] for pos in self.white_positions])/len(self.white_positions) + len(self.black_positions)) \
+        #         + (sum([pos[0] for pos in self.black_positions])/len(self.black_positions) - len(self.white_positions))
+        # else:
+        #     if self.isgoalstate() == 2:
+        #         winning = 99
+        #     return winning + 2 * (-sum([pos[0] for pos in self.black_positions])/len(self.black_positions) + len(self.white_positions))\
+        #     + (-sum([pos[0] for pos in self.white_positions])/len(self.white_positions) - len(self.black_positions))
+
+    def myscore(self, turn):
+        if turn == 1:
+            return len(self.black_positions) + sum(pos[0] for pos in self.black_positions) + self.winningscore(turn)
+        elif turn == 2:
+            return len(self.white_positions) + sum(7 - pos[0] for pos in self.white_positions) + self.winningscore(turn)
+
+    def enemyscore(self, turn):
+        if turn == 1:
+            return len(self.white_positions) + sum(7 - pos[0] for pos in self.white_positions) + self.winningscore(2)
+        elif turn == 2:
+            return len(self.black_positions) + sum(pos[0] for pos in self.black_positions) + self.winningscore(1)
+
+    def winningscore(self, turn):
+        winningvalue = 200
         if turn == 1:
             if self.isgoalstate() == 1:
-                winning = 99
-            return winning + 2 * (sum([pos[0] for pos in self.white_positions])/len(self.white_positions) + len(self.black_positions)) \
-                + (sum([pos[0] for pos in self.black_positions])/len(self.black_positions) - len(self.white_positions))
-        else:
+                return winningvalue
+            elif self.isgoalstate() == 2:
+                return -winningvalue
+            else:
+                return 0
+        elif turn == 2:
             if self.isgoalstate() == 2:
-                winning = 99
-            return winning + 2 * (-sum([pos[0] for pos in self.black_positions])/len(self.black_positions) + len(self.white_positions))\
-            + (-sum([pos[0] for pos in self.white_positions])/len(self.white_positions) - len(self.black_positions))
+                return winningvalue
+            elif self.isgoalstate() == 1:
+                return -winningvalue
+            else:
+                return 0
 
     def isgoalstate(self):
         if 0 in [item[0] for item in self.white_positions] or len(self.black_positions) == 0:

@@ -18,10 +18,10 @@ class AlphaBetaAgent:
         v = MINNUM
         actions = state.available_actions()
 
-        if self.turn == 1:
-            actions = sorted(state.available_actions(), key=lambda action: action.coordinate[0], reverse=True)
-        else:
-            actions = sorted(state.available_actions(), key=lambda action: action.coordinate[0])
+        #if self.turn == 1:
+        actions = sorted(state.available_actions(), key=lambda action: self.orderaction(action, state), reverse=True)
+        #else:
+        #    actions = sorted(state.available_actions(), key=lambda action: self.orderaction(action, state))
 
         for action in actions:
             self.nodes += 1
@@ -38,10 +38,10 @@ class AlphaBetaAgent:
         v = MAXNUM
         actions = state.available_actions()
 
-        if self.turn == 1:
-            actions = sorted(state.available_actions(), key=lambda action: action.coordinate[0])
-        else:
-            actions = sorted(state.available_actions(), key=lambda action: action.coordinate[0], reverse=True)
+        #if self.turn == 1:
+        actions = sorted(state.available_actions(), key=lambda action: self.orderaction(action, state))
+        #else:
+        #    actions = sorted(state.available_actions(), key=lambda action: self.orderaction(action, state), reverse=True)
 
         for action in actions:
             self.nodes += 1
@@ -78,8 +78,29 @@ class AlphaBetaAgent:
         return initialstate.transfer(final_action), self.nodes, self.piece_num
 
     # order actions to make more pruning
-    def orderaction(self, action):
+    def orderaction(self, action, state):
+        y = action.coordinate[0]
+        x = action.coordinate[1]
         if action.turn == 1:
             if action.direction == 1:
-                pass
+                if (y - 1, x - 1) in state.white_positions:
+                    return 2
+            if action.direction == 2:
+                if (y - 1, x) in state.white_positions:
+                    return 2
+            if action.direction == 2:
+                if (y - 1, x + 1) in state.white_positions:
+                    return 2
+
+        elif action.turn == 2:
+            if action.direction == 1:
+                if (y + 1, x - 1) in state.black_positions:
+                    return 2
+            if action.direction == 2:
+                if (y + 1, x) in state.black_positions:
+                    return 2
+            if action.direction == 2:
+                if (y + 1, x + 1) in state.black_positions:
+                    return 2
+        return 1
             #if action.coordinate[]
