@@ -70,6 +70,7 @@ class AlphaBetaAgent:
             if minresult > v:
                 final_action = action
                 v = minresult
+        print(v)
         if self.turn == 1:
             self.piece_num = initialstate.transfer(final_action).white_num
         elif self.turn == 2:

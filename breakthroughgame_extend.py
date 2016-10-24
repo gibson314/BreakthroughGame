@@ -62,7 +62,7 @@ class BreakthroughGame:
         self.screen.fill([255, 255, 255])
 
         # display the board and chess
-        self.display()
+
         if self.status == 5:
             # Black
             if self.turn == 1:
@@ -130,6 +130,7 @@ class BreakthroughGame:
                 elif self.boardmatrix[self.new_x][self.new_y] == self.boardmatrix[self.ori_x][self.ori_y]:
                     self.ori_x = self.new_x
                     self.ori_y = self.new_y
+        self.display()
         # update the screen
         pygame.display.flip()
 
@@ -255,7 +256,6 @@ class BreakthroughGame:
         elif searchtype == 2:
             return self.ai_move_alphabeta(evaluation, type)
 
-
     def ai_move_minimax(self, function_type, board_type):
         board, nodes, piece = MinimaxAgent(self.boardmatrix, self.turn, 3, function_type, board_type).minimax_decision()
         self.boardmatrix = board.getMatrix()
@@ -266,7 +266,6 @@ class BreakthroughGame:
             self.total_nodes_2 += nodes
             self.turn = 1
         self.eat_piece = 20 - piece
-
         if self.isgoalstate():
             self.status = 3
             print(self.boardmatrix)

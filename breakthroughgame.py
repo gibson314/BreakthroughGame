@@ -67,7 +67,7 @@ class BreakthroughGame:
             # Black
             if self.turn == 1:
                 start = time.clock()
-                self.ai_move(2, 1)
+                self.ai_move(2, 2)
                 self.total_time_1 += (time.clock() - start)
                 self.total_step_1 += 1
                 print('total_step_1 = ', self.total_step_1,
@@ -77,7 +77,7 @@ class BreakthroughGame:
                       'have_eaten = ', self.eat_piece)
             elif self.turn == 2:
                 start = time.clock()
-                self.ai_move(2, 2)
+                self.ai_move(2, 1)
                 self.total_time_2 += (time.clock() - start)
                 self.total_step_2 += 1
                 print('total_step_2 = ', self.total_step_2,
@@ -263,7 +263,7 @@ class BreakthroughGame:
 
 
     def ai_move_minimax(self, function_type):
-        board, nodes, piece = MinimaxAgent(self.boardmatrix, self.turn, 1, function_type).minimax_decision()
+        board, nodes, piece = MinimaxAgent(self.boardmatrix, self.turn, 3, function_type).minimax_decision()
         self.boardmatrix = board.getMatrix()
         if self.turn == 1:
             self.total_nodes_1 += nodes

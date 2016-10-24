@@ -154,53 +154,41 @@ class State:
             return self.offensive_function(turn)
         elif self.function == 2:
             return self.defensive_function(turn)
+        elif self.function == 3:
+            return self.offensive_function_3_workers(turn)
+        elif self.function == 4:
+            return self.defensive_function_3_workers(turn)
+        elif self.function == 5:
+            return self.offensive_function_long(turn)
+        elif self.function == 6:
+            return self.defensive_function_long(turn)
 
-    def offensive_function(self, turn):
-        """
-        2 * offensive_component + defensive_componet + tie_breaking
-        """
-        return 2 * self.myscore(turn) - self.enemyscore(turn)
-        # winning = 0
-        # if turn == 1:
-        #     if self.isgoalstate() == 1:
-        #         winning = 99
-        #     return winning + 2 * (sum([pos[0] for pos in self.black_positions])/len(self.black_positions) - len(self.white_positions))\
-        #         + (sum([pos[0] for pos in self.white_positions])/len(self.white_positions) + len(self.black_positions))
-        # else:
-        #     if self.isgoalstate() == 2:
-        #         winning = 99
-        #     return winning + 2 * (-sum([pos[0] for pos in self.white_positions])/len(self.white_positions) - len(self.black_positions))\
-        #         + (-sum([pos[0] for pos in self.black_positions])/len(self.black_positions) + len(self.white_positions))
 
-    def defensive_function(self, turn):
-        """
-        2 * defensive_component + offensive_componet + tie_breaking
-        """
-        return self.myscore(turn) - 2 * self.enemyscore(turn)
 
-        # winning = 0
-        # if turn == 1:
-        #     if self.isgoalstate() == 1:
-        #         winning = 99
-        #     return winning + 2 * (sum([pos[0] for pos in self.white_positions])/len(self.white_positions) + len(self.black_positions)) \
-        #         + (sum([pos[0] for pos in self.black_positions])/len(self.black_positions) - len(self.white_positions))
-        # else:
-        #     if self.isgoalstate() == 2:
-        #         winning = 99
-        #     return winning + 2 * (-sum([pos[0] for pos in self.black_positions])/len(self.black_positions) + len(self.white_positions))\
-        #     + (-sum([pos[0] for pos in self.white_positions])/len(self.white_positions) - len(self.black_positions))
 
     def myscore(self, turn):
         if turn == 1:
-            return len(self.black_positions) + sum(pos[0] for pos in self.black_positions) + self.winningscore(turn)
+            return len(self.black_positions) \
+                   + sum(pos[0] for pos in self.black_positions) \
+                   + max(pos[0] for pos in self.black_positions) \
+                   + self.winningscore(turn)
         elif turn == 2:
-            return len(self.white_positions) + sum(7 - pos[0] for pos in self.white_positions) + self.winningscore(turn)
+            return len(self.white_positions) \
+                   + sum(7 - pos[0] for pos in self.white_positions) \
+                   + max(7 - pos[0] for pos in self.white_positions) \
+                   + self.winningscore(turn)
 
     def enemyscore(self, turn):
         if turn == 1:
-            return len(self.white_positions) + sum(7 - pos[0] for pos in self.white_positions) + self.winningscore(2)
+            return len(self.white_positions) \
+                   + sum(7 - pos[0] for pos in self.white_positions) \
+                   + max(7 - pos[0] for pos in self.white_positions)\
+                   + self.winningscore(2)
         elif turn == 2:
-            return len(self.black_positions) + sum(pos[0] for pos in self.black_positions) + self.winningscore(1)
+            return len(self.black_positions) \
+                   + sum(pos[0] for pos in self.black_positions) \
+                   + max(pos[0] for pos in self.black_positions) \
+                   + self.winningscore(1)
 
     def winningscore(self, turn):
         winningvalue = 200
@@ -225,3 +213,50 @@ class State:
         if self.height - 1 in [item[0] for item in self.black_positions] or len(self.white_positions) == 0:
             return 1
         return 0
+
+    def offensive_function(self, turn):
+        """
+        2 * offensive_component + defensive_componet + tie_breaking
+        """
+        return 2 * self.myscore(turn) - 0.3 * self.enemyscore(turn)
+        # winning = 0
+        # if turn == 1:
+        #     if self.isgoalstate() == 1:
+        #         winning = 99
+        #     return winning + 2 * (sum([pos[0] for pos in self.black_positions])/len(self.black_positions) - len(self.white_positions))\
+        #         + (sum([pos[0] for pos in self.white_positions])/len(self.white_positions) + len(self.black_positions))
+        # else:
+        #     if self.isgoalstate() == 2:
+        #         winning = 99
+        #     return winning + 2 * (-sum([pos[0] for pos in self.white_positions])/len(self.white_positions) - len(self.black_positions))\
+        #         + (-sum([pos[0] for pos in self.black_positions])/len(self.black_positions) + len(self.white_positions))
+
+    def defensive_function(self, turn):
+        """
+        2 * defensive_component + offensive_componet + tie_breaking
+        """
+        return 0.3 * self.myscore(turn) - 2 * self.enemyscore(turn)
+
+        # winning = 0
+        # if turn == 1:
+        #     if self.isgoalstate() == 1:
+        #         winning = 99
+        #     return winning + 2 * (sum([pos[0] for pos in self.white_positions])/len(self.white_positions) + len(self.black_positions)) \
+        #         + (sum([pos[0] for pos in self.black_positions])/len(self.black_positions) - len(self.white_positions))
+        # else:
+        #     if self.isgoalstate() == 2:
+        #         winning = 99
+        #     return winning + 2 * (-sum([pos[0] for pos in self.black_positions])/len(self.black_positions) + len(self.white_positions))\
+        #     + (-sum([pos[0] for pos in self.white_positions])/len(self.white_positions) - len(self.black_positions))
+
+    def offensive_function_3_workers(self, turn):
+        return 1.5 * self.myscore(turn) - self.enemyscore(turn)
+
+    def defensive_function_3_workers(self, turn):
+        return self.myscore(turn) - 1.5 * self.enemyscore(turn)
+
+    def offensive_function_long(self, turn):
+        return 1.5 * self.myscore(turn) - self.enemyscore(turn)
+
+    def defensive_function_long(self, turn):
+        return self.myscore(turn) - 1.5 * self.enemyscore(turn)
