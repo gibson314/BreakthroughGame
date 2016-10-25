@@ -201,12 +201,29 @@ class State:
             else:
                 return 0
 
-    def isgoalstate(self):
-        if 0 in [item[0] for item in self.white_positions] or len(self.black_positions) == 0:
-            return 2
-        if self.height - 1 in [item[0] for item in self.black_positions] or len(self.white_positions) == 0:
-            return 1
-        return 0
+    def isgoalstate(self, type=0):
+        if type == 0:
+            if 0 in [item[0] for item in self.white_positions] or len(self.black_positions) == 0:
+                return 2
+            if self.height - 1 in [item[0] for item in self.black_positions] or len(self.white_positions) == 0:
+                return 1
+            return 0
+        else:
+            count = 0
+            for i in self.black_positions:
+                if i[0] == 7:
+                    count += 1
+            if count == 3:
+                return True
+            count = 0
+            for i in self.white_positions:
+                if i[0] == 0:
+                    count += 1
+            if count == 3:
+                return True
+            if len(self.black_positions) <= 2 or len(self.white_positions) <= 2:
+                return True
+        return False
 
     def get_farthest_piece(self, turn):
         if turn == 1:
@@ -237,6 +254,7 @@ class State:
                     res += 1
         return res
 
+
 # num of pieces in baseline 1, 2, 5, 6
     def get_important_pos_baseline(self, turn):
         if turn == 1:
@@ -247,38 +265,40 @@ class State:
     def myscore(self, turn):
         if turn == 1:
             return len(self.black_positions) \
-                   + 2 * sum(pos[0] for pos in self.black_positions) \
-                   + max(pos[0] for pos in self.black_positions) \
-                   + self.winningscore(turn)
+                   + sum(pos[0] for pos in self.black_positions) + self.winningscore(turn)
+                   #+ max(pos[0] for pos in self.black_positions) \
+
         elif turn == 2:
             return len(self.white_positions) \
-                   + 2 * sum(7 - pos[0] for pos in self.white_positions) \
-                   + max(7 - pos[0] for pos in self.white_positions) \
-                   + self.winningscore(turn)
+                   + sum(7 - pos[0] for pos in self.white_positions) + self.winningscore(turn)
+                   #+ max(7 - pos[0] for pos in self.white_positions) \
+
 
     def enemyscore(self, turn):
         if turn == 1:
             return len(self.white_positions) \
-                   + 2 * sum(7 - pos[0] for pos in self.white_positions) \
-                   + max(7 - pos[0] for pos in self.white_positions)\
-                   + self.winningscore(2)
+                   + sum(7 - pos[0] for pos in self.white_positions) + self.winningscore(2)
+                   #+ max(7 - pos[0] for pos in self.white_positions)\
+
         elif turn == 2:
             return len(self.black_positions) \
-                   + 2 * sum(pos[0] for pos in self.black_positions) \
-                   + max(pos[0] for pos in self.black_positions) \
-                   + self.winningscore(1)
+                   + sum(pos[0] for pos in self.black_positions) + self.winningscore(1)
+                   #+ max(pos[0] for pos in self.black_positions) \
+
 
     def offensive_function(self, turn):
         """
         2 * offensive_component + defensive_componet + tie_breaking
         """
-        return 2 * self.myscore(turn) - 1 * self.enemyscore(turn) +  self.get_important_pos_baseline(turn)
+        return 2 * self.myscore(turn) - 1 * self.enemyscore(turn)
+               #+  self.get_important_pos_baseline(turn)
 
     def defensive_function(self, turn):
         """
         2 * defensive_component + offensive_componet + tie_breaking
         """
-        return 1 * self.myscore(turn) - 2 * self.enemyscore(turn) + 2 * self.get_vertical_pairs(turn) + 4 * self.get_important_pos_baseline(turn)
+        return 1 * self.myscore(turn) - 2 * self.enemyscore(turn)
+               #+ 2 * self.get_vertical_pairs(turn) + 4 * self.get_important_pos_baseline(turn)
 
 
     def myscore_3_workers(self, turn):
@@ -292,6 +312,7 @@ class State:
                    + sum(7 - pos[0] for pos in self.white_positions) \
                    + sum(sorted([7 - pos[0] for pos in self.white_positions], reverse=True)[0:3]) \
                    + self.winningscore(turn)
+
     def enemyscore_3_workers(self, turn):
         if turn == 1:
             return len(self.white_positions) \
@@ -303,6 +324,7 @@ class State:
                    + sum(pos[0] for pos in self.black_positions) \
                    + sum(sorted([pos[0] for pos in self.black_positions], reverse=True)[0:3]) \
                    + self.winningscore(1)
+
     def myscore_long(self, turn):
         if turn == 1:
             return  len(self.black_positions) \
