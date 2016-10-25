@@ -77,7 +77,7 @@ class BreakthroughGame:
                       'have_eaten = ', self.eat_piece)
             elif self.turn == 2:
                 start = time.clock()
-                self.ai_move(1, 6, 9)
+                self.ai_move(2, 5, 9)
                 self.total_time_2 += (time.clock() - start)
                 self.total_step_2 += 1
                 print('total_step_2 = ', self.total_step_2,

@@ -284,7 +284,7 @@ class State:
     def myscore_3_workers(self, turn):
         if turn == 1:
             return len(self.black_positions) \
-                   + 2 * sum(pos[0] for pos in self.black_positions) \
+                   + sum(pos[0] for pos in self.black_positions) \
                    + sum(sorted([pos[0] for pos in self.black_positions], reverse=True)[0:3]) \
                    + self.winningscore(turn)
         elif turn == 2:
@@ -305,26 +305,23 @@ class State:
                    + self.winningscore(1)
     def myscore_long(self, turn):
         if turn == 1:
-            return 2 * len(self.black_positions) \
-                   + sum(pos[0] for pos in self.black_positions) \
-                   + max(pos[0] for pos in self.black_positions) \
+            return  len(self.black_positions) \
+                   + 5 * sum(pos[0] for pos in self.black_positions) \
                    + self.winningscore(turn)
+
         elif turn == 2:
-            return 2 * len(self.white_positions) \
-                   + sum(7 - pos[0] for pos in self.white_positions) \
-                   + max(7 - pos[0] for pos in self.white_positions) \
+            return len(self.white_positions) \
+                   + 5 *sum(7 - pos[0] for pos in self.white_positions) \
                    + self.winningscore(turn)
 
     def enemyscore_long(self, turn):
         if turn == 1:
-            return 2 * len(self.white_positions) \
-                   + sum(7 - pos[0] for pos in self.white_positions) \
-                   + max(7 - pos[0] for pos in self.white_positions)\
+            return len(self.white_positions) \
+                   + 5 * sum(7 - pos[0] for pos in self.white_positions) \
                    + self.winningscore(2)
         elif turn == 2:
-            return 2 * len(self.black_positions) \
-                   + sum(pos[0] for pos in self.black_positions) \
-                   + max(pos[0] for pos in self.black_positions) \
+            return len(self.black_positions) \
+                   + 5 * sum(pos[0] for pos in self.black_positions) \
                    + self.winningscore(1)
 
     def offensive_function_3_workers(self, turn):
@@ -334,7 +331,7 @@ class State:
         return self.myscore_3_workers(turn) - 3 * self.enemyscore_3_workers(turn)
 
     def offensive_function_long(self, turn):
-        return 3 * self.myscore_long(turn) - self.enemyscore_long(turn)
+        return 4 * self.myscore_long(turn) - self.enemyscore_long(turn)
 
     def defensive_function_long(self, turn):
-        return self.myscore_long(turn) - 3 * self.enemyscore_long(turn)
+        return self.myscore_long(turn) - 4 * self.enemyscore_long(turn)

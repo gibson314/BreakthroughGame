@@ -4,7 +4,6 @@
     <list default="true" id="0c3c43a0-53cf-4bc5-aa92-db8e31291d3b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/alpha_beta_agent.py" afterPath="$PROJECT_DIR$/alpha_beta_agent.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/breakthroughgame.py" afterPath="$PROJECT_DIR$/breakthroughgame.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/breakthroughgame_extend.py" afterPath="$PROJECT_DIR$/breakthroughgame_extend.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model.py" afterPath="$PROJECT_DIR$/model.py" />
     </list>
@@ -26,11 +25,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="breakthroughgame.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="breakthroughgame.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/breakthroughgame.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="397">
-              <caret line="274" column="0" selection-start-line="274" selection-start-column="0" selection-end-line="274" selection-end-column="0" />
+            <state relative-caret-position="548">
+              <caret line="286" column="39" selection-start-line="286" selection-start-column="39" selection-end-line="286" selection-end-column="39" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -42,7 +41,7 @@
         <entry file="file://$PROJECT_DIR$/model.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="574">
-              <caret line="339" column="71" selection-start-line="339" selection-start-column="71" selection-end-line="339" selection-end-column="71" />
+              <caret line="336" column="71" selection-start-line="336" selection-start-column="41" selection-end-line="336" selection-end-column="71" />
               <folding />
             </state>
           </provider>
@@ -51,18 +50,18 @@
       <file leaf-file-name="alpha_beta_agent.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/alpha_beta_agent.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="652">
-              <caret line="115" column="8" selection-start-line="115" selection-start-column="8" selection-end-line="115" selection-end-column="8" />
+            <state relative-caret-position="220">
+              <caret line="99" column="10" selection-start-line="99" selection-start-column="10" selection-end-line="99" selection-end-column="10" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="breakthroughgame_extend.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="breakthroughgame_extend.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/breakthroughgame_extend.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="532">
-              <caret line="82" column="59" selection-start-line="82" selection-start-column="58" selection-end-line="82" selection-end-column="59" />
+            <state relative-caret-position="459">
+              <caret line="79" column="33" selection-start-line="79" selection-start-column="33" selection-end-line="79" selection-end-column="33" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -117,8 +116,8 @@
         <option value="$PROJECT_DIR$/src/model.py" />
         <option value="$PROJECT_DIR$/minimax_agent.py" />
         <option value="$PROJECT_DIR$/breakthroughgame.py" />
-        <option value="$PROJECT_DIR$/model.py" />
         <option value="$PROJECT_DIR$/alpha_beta_agent.py" />
+        <option value="$PROJECT_DIR$/model.py" />
         <option value="$PROJECT_DIR$/breakthroughgame_extend.py" />
       </list>
     </option>
@@ -210,7 +209,7 @@
       <recent name="D:\UIUC\CS440\Breakthrough" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.breakthroughgame_extend">
+  <component name="RunManager" selected="Python.breakthroughgame">
     <configuration default="false" name="example" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -403,8 +402,8 @@
     </list>
     <recent_temporary>
       <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="Python.breakthroughgame_extend" />
-        <item index="1" class="java.lang.String" itemvalue="Python.breakthroughgame" />
+        <item index="0" class="java.lang.String" itemvalue="Python.breakthroughgame" />
+        <item index="1" class="java.lang.String" itemvalue="Python.breakthroughgame_extend" />
         <item index="2" class="java.lang.String" itemvalue="Python.example" />
       </list>
     </recent_temporary>
@@ -819,24 +818,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/breakthroughgame.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="397">
-          <caret line="274" column="0" selection-start-line="274" selection-start-column="0" selection-end-line="274" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="574">
-          <caret line="339" column="71" selection-start-line="339" selection-start-column="71" selection-end-line="339" selection-end-column="71" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/minimax_agent.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="31">
@@ -849,16 +830,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/alpha_beta_agent.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="652">
-          <caret line="115" column="8" selection-start-line="115" selection-start-column="8" selection-end-line="115" selection-end-column="8" />
+        <state relative-caret-position="220">
+          <caret line="99" column="10" selection-start-line="99" selection-start-column="10" selection-end-line="99" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="574">
+          <caret line="336" column="71" selection-start-line="336" selection-start-column="41" selection-end-line="336" selection-end-column="71" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/breakthroughgame_extend.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="82" column="59" selection-start-line="82" selection-start-column="58" selection-end-line="82" selection-end-column="59" />
+        <state relative-caret-position="459">
+          <caret line="79" column="33" selection-start-line="79" selection-start-column="33" selection-end-line="79" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/breakthroughgame.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="548">
+          <caret line="286" column="39" selection-start-line="286" selection-start-column="39" selection-end-line="286" selection-end-column="39" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
