@@ -67,7 +67,7 @@ class BreakthroughGame:
             # Black
             if self.turn == 1:
                 start = time.clock()
-                self.ai_move(2, 1, 9)
+                self.ai_move(2, 6, 9)
                 self.total_time_1 += (time.clock() - start)
                 self.total_step_1 += 1
                 print('total_step_1 = ', self.total_step_1,
@@ -77,7 +77,7 @@ class BreakthroughGame:
                       'have_eaten = ', self.eat_piece)
             elif self.turn == 2:
                 start = time.clock()
-                self.ai_move(2, 2, 9)
+                self.ai_move(1, 6, 9)
                 self.total_time_2 += (time.clock() - start)
                 self.total_step_2 += 1
                 print('total_step_2 = ', self.total_step_2,
@@ -101,7 +101,7 @@ class BreakthroughGame:
                 self.status = 0
             # computer button pressed
             elif event.type == pygame.MOUSEBUTTONDOWN and self.iscomputer(event.pos):
-                self.ai_move_alphabeta(1)
+                self.ai_move_alphabeta(1, 9)
                 # self.ai_move_minimax()
 
             elif event.type == pygame.MOUSEBUTTONDOWN and self.isauto(event.pos):
@@ -271,7 +271,7 @@ class BreakthroughGame:
             print(self.boardmatrix)
 
     def ai_move_alphabeta(self, function_type, board_type):
-        board, nodes, piece = AlphaBetaAgent(self.boardmatrix, self.turn, 5, function_type, board_type).alpha_beta_decision()
+        board, nodes, piece = AlphaBetaAgent(self.boardmatrix, self.turn, 4, function_type, board_type).alpha_beta_decision()
         self.boardmatrix = board.getMatrix()
         if self.turn == 1:
             self.total_nodes_1 += nodes

@@ -80,6 +80,7 @@ class AlphaBetaAgent:
 
     # order actions to make more pruning
     def orderaction(self, action, state):
+        '''
         y = action.coordinate[0]
         x = action.coordinate[1]
         if action.turn == 1:
@@ -105,3 +106,11 @@ class AlphaBetaAgent:
                     return 2
         return 1
             #if action.coordinate[]
+        '''
+        #print(self.turn)
+        # return state.transfer(action).utility(self.turn)
+        #if action.turn == 1:
+        #    return max(state.get_farthest_piece(self.turn), action.coordinate[0] + 1)
+        #elif action.turn == 2:
+        #    return max(state.get_farthest_piece(self.turn), 7 - action.coordinate[0] + 1)
+        return 0
