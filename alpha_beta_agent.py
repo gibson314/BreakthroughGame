@@ -108,7 +108,7 @@ class AlphaBetaAgent:
             #if action.coordinate[]
         '''
         #print(self.turn)
-        #return state.transfer(action).utility(self.turn)
+        # return state.transfer(action).utility(self.turn)
         #if action.turn == 1:
         #    return max(state.get_farthest_piece(self.turn), action.coordinate[0] + 1)
         #elif action.turn == 2:
