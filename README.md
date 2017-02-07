@@ -4,3 +4,7 @@ It won the 2001 8x8 Game Design Competition, even though the game was originally
 to larger board sizes.
 
 Here we want to implement agents to play the above game, one using minimax search and one using alpha-beta search.
+
+Features that were taken into consideration include “important pieces”, “connected pairs of pieces”, etc. Accept parameters' configuration to make the agent more aggresive/defensive.
+
+The demo game interface:
